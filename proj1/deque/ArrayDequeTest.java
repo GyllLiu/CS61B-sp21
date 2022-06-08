@@ -97,7 +97,7 @@ public class ArrayDequeTest {
         }
 
         int a = arrayDeque.get(0);
-        assertEquals(Integer.valueOf(0), arrayDeque.get(0));
+        assertEquals(Integer.valueOf(8), arrayDeque.get(0));
     }
 
     @Test
@@ -108,5 +108,54 @@ public class ArrayDequeTest {
         }
         int a = arrayDeque.get(0);
         assertEquals(Integer.valueOf(0), arrayDeque.get(0));
+    }
+
+    @Test
+    public void removeEmpty() {
+        System.out.println("Make sure to uncomment the lines below (and delete this print statement).");
+
+        ArrayDeque<Integer> lld1 = new ArrayDeque<>();
+        lld1.addFirst(3);
+
+        lld1.removeLast();
+        lld1.removeFirst();
+        lld1.removeLast();
+        lld1.removeFirst();
+
+        int size = lld1.size();
+        String errorMsg = "  Bad size returned when removing from empty deque.\n";
+        errorMsg += "  student size() returned " + size + "\n";
+        errorMsg += "  actual size() returned 0\n";
+
+        assertEquals(errorMsg, 0, size);
+    }
+
+
+    @Test
+    public void negativeSize() {
+        System.out.println("Make sure to uncomment the lines below (and delete this print statement).");
+
+        ArrayDeque<Integer> lld1 = new ArrayDeque<>();
+        lld1.addFirst(3);
+
+        lld1.removeLast();
+        lld1.removeFirst();
+        lld1.removeLast();
+        lld1.removeFirst();
+        lld1.removeLast();
+        lld1.removeFirst();
+        lld1.removeLast();
+        lld1.removeFirst();
+        lld1.removeLast();
+        lld1.removeFirst();
+        lld1.removeLast();
+        lld1.removeFirst();
+
+        int size = lld1.size();
+        String errorMsg = "  Bad size returned when removing from empty deque.\n";
+        errorMsg += "  student size() returned " + size + "\n";
+        errorMsg += "  actual size() returned 0\n";
+
+        assertEquals(errorMsg, 0, size);
     }
 }

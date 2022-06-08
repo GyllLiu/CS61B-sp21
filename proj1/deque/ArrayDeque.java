@@ -54,6 +54,14 @@ public class ArrayDeque<T> implements Deque<T>{
 
     @Override
     public T removeFirst() {
+        if(last == 0 && first == items.length - 1) {
+            return null;
+        }
+
+        if(items[first] == null && first == items.length - 1) {
+            return null;
+        }
+
         int reCapacity = (int) (items.length*0.25);
         if(size < reCapacity) {
             reIndexFirstRemove();
@@ -66,6 +74,16 @@ public class ArrayDeque<T> implements Deque<T>{
 
     @Override
     public T removeLast() {
+        //if it is an empty AD, return null
+        if(last == 0 && first == items.length - 1) {
+            return null;
+        }
+
+        //if no items added to last, return null
+        if(items[last] == null && last == 0) {
+            return null;
+        }
+
         if(size < items.length*0.25) {
             reIndexFirstRemove();
         }
