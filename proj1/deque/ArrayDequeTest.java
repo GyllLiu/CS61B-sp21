@@ -1,6 +1,5 @@
 package deque;
 
-import org.checkerframework.checker.units.qual.A;
 import org.junit.Test;
 
 import java.util.Iterator;
@@ -12,7 +11,7 @@ public class ArrayDequeTest {
     @Test
     public void testAddFirst() {
         ArrayDeque<Integer> arrayDeque = new ArrayDeque<>();
-        for(int i = 0; i < 10; i++) {
+        for (int i = 0; i < 10; i++) {
             arrayDeque.addFirst(i);
         }
     }
@@ -20,7 +19,7 @@ public class ArrayDequeTest {
     @Test
     public void testBigAddFirst() {
         ArrayDeque<Integer> arrayDeque = new ArrayDeque<>();
-        for(int i = 0; i < 100000; i++) {
+        for (int i = 0; i < 100000; i++) {
             arrayDeque.addFirst(i);
         }
     }
@@ -28,7 +27,7 @@ public class ArrayDequeTest {
     @Test
     public void testAddLast() {
         ArrayDeque<Integer> arrayDeque = new ArrayDeque<>();
-        for(int i = 0; i < 10; i++) {
+        for (int i = 0; i < 10; i++) {
             arrayDeque.addLast(i);
         }
     }
@@ -36,11 +35,11 @@ public class ArrayDequeTest {
     @Test
     public void testAddLastAndFirst() {
         ArrayDeque<Integer> arrayDeque = new ArrayDeque<>();
-        for(int i = 0; i < 5; i++) {
+        for (int i = 0; i < 5; i++) {
             arrayDeque.addFirst(i);
         }
 
-        for(int i = 5; i < 10; i++) {
+        for (int i = 5; i < 10; i++) {
             arrayDeque.addLast(i);
         }
     }
@@ -54,11 +53,11 @@ public class ArrayDequeTest {
     @Test
     public void testRemoveFirst() {
         ArrayDeque<Integer> arrayDeque = new ArrayDeque<>();
-        for(int i = 0; i < 10; i++) {
+        for (int i = 0; i < 10; i++) {
             arrayDeque.addFirst(i);
         }
 
-        for(int i = 0; i < 10; i++) {
+        for (int i = 0; i < 10; i++) {
             arrayDeque.removeFirst();
         }
         assertTrue("lld1 should be empty upon initialization", arrayDeque.isEmpty());
@@ -67,11 +66,11 @@ public class ArrayDequeTest {
     @Test
     public void testRemoveLast() {
         ArrayDeque<Integer> arrayDeque = new ArrayDeque<>();
-        for(int i = 0; i < 5; i++) {
+        for (int i = 0; i < 5; i++) {
             arrayDeque.addLast(i);
         }
 
-        for(int i = 0; i < 5; i++) {
+        for (int i = 0; i < 5; i++) {
             arrayDeque.removeLast();
         }
 
@@ -82,11 +81,11 @@ public class ArrayDequeTest {
     @Test
     public void testBigDequeRemoveFrist() {
         ArrayDeque<Integer> arrayDeque = new ArrayDeque<>();
-        for(int i = 0; i < 15000; i++) {
+        for (int i = 0; i < 15000; i++) {
             arrayDeque.addFirst(i);
         }
 
-        for(int i = 0; i < 15000; i++) {
+        for (int i = 0; i < 15000; i++) {
             arrayDeque.removeFirst();
         }
         assertTrue("lld1 should be empty upon initialization", arrayDeque.isEmpty());
@@ -95,7 +94,7 @@ public class ArrayDequeTest {
     @Test
     public void getByIndexFromAddFirst() {
         ArrayDeque<Integer> arrayDeque = new ArrayDeque<>();
-        for(int i = 0; i < 9; i++) {
+        for (int i = 0; i < 9; i++) {
             arrayDeque.addFirst(i);
         }
 
@@ -106,7 +105,7 @@ public class ArrayDequeTest {
     @Test
     public void getByIndexFromAddLast() {
         ArrayDeque<Integer> arrayDeque = new ArrayDeque<>();
-        for(int i = 0; i < 10; i++) {
+        for (int i = 0; i < 10; i++) {
             arrayDeque.addLast(i);
         }
         int a = arrayDeque.get(0);
@@ -185,7 +184,7 @@ public class ArrayDequeTest {
     public void testEquals() {
         ArrayDeque<Integer> a = new ArrayDeque<>();
         ArrayDeque<Integer> b = new ArrayDeque<>();
-        for(int i = 0; i < 10; i++) {
+        for (int i = 0; i < 10; i++) {
             a.addLast(i);
             b.addLast(i);
         }
@@ -197,7 +196,7 @@ public class ArrayDequeTest {
     public void testNotEquals() {
         ArrayDeque<Integer> a = new ArrayDeque<>();
         ArrayDeque<Integer> b = new ArrayDeque<>();
-        for(int i = 0; i < 10; i++) {
+        for (int i = 0; i < 10; i++) {
             a.addLast(i);
             b.addFirst(i);
         }
@@ -210,7 +209,7 @@ public class ArrayDequeTest {
     public void testEqualsString() {
         ArrayDeque<String> a = new ArrayDeque<>();
         ArrayDeque<String> b = new ArrayDeque<>();
-        for(int i = 0; i < 10000; i++) {
+        for (int i = 0; i < 10000; i++) {
             a.addFirst(String.valueOf(i));
             b.addFirst(String.valueOf(i));
         }
@@ -220,7 +219,7 @@ public class ArrayDequeTest {
     @Test
     public void testIteratorAddFirst() {
         ArrayDeque<String> a = new ArrayDeque<>();
-        for(int i = 0; i < 15; i++) {
+        for (int i = 0; i < 15; i++) {
             a.addFirst(String.valueOf(i));
         }
 
@@ -233,7 +232,7 @@ public class ArrayDequeTest {
     @Test
     public void testIteratorAddLast() {
         ArrayDeque<String> a = new ArrayDeque<>();
-        for(int i = 0; i < 5; i++) {
+        for (int i = 0; i < 5; i++) {
             a.addLast(String.valueOf(i));
         }
 
@@ -246,11 +245,11 @@ public class ArrayDequeTest {
     @Test
     public void testIteratorAddLastAndFirst() {
         ArrayDeque<String> a = new ArrayDeque<>();
-        for(int i = 0; i < 5; i++) {
+        for (int i = 0; i < 5; i++) {
             a.addLast(String.valueOf(i));
         }
 
-        for(int i = 5; i < 10; i++) {
+        for (int i = 5; i < 10; i++) {
             a.addFirst(String.valueOf(i));
         }
 
@@ -263,11 +262,11 @@ public class ArrayDequeTest {
     @Test
     public void testAddFirstRemoveLast() {
         ArrayDeque<String> a = new ArrayDeque<>();
-        for(int i = 0; i < 5; i++) {
+        for (int i = 0; i < 5; i++) {
             a.addFirst(String.valueOf(i));
         }
 
-        for(int i = 5; i < 10; i++) {
+        for (int i = 5; i < 10; i++) {
             a.removeLast();
         }
 
@@ -277,11 +276,11 @@ public class ArrayDequeTest {
     @Test
     public void testAddLastRemoveFirst() {
         ArrayDeque<String> a = new ArrayDeque<>();
-        for(int i = 0; i < 5; i++) {
+        for (int i = 0; i < 5; i++) {
             a.addFirst(String.valueOf(i));
         }
 
-        for(int i = 5; i < 10; i++) {
+        for (int i = 5; i < 10; i++) {
             a.removeLast();
         }
 
@@ -291,12 +290,54 @@ public class ArrayDequeTest {
     @Test
     public void testRemoveFirstVal() {
         ArrayDeque<String> a = new ArrayDeque<>();
-        for(int i = 0; i < 5; i++) {
+        for (int i = 0; i < 5; i++) {
             a.addFirst(String.valueOf(i));
         }
 
 
-
         assertEquals("0", a.removeLast());
+    }
+
+    @Test
+    public void testEqualsDL() {
+        ArrayDeque<String> a = new ArrayDeque<>();
+        for (int i = 0; i < 5; i++) {
+            a.addFirst(String.valueOf(i));
+        }
+
+        LinkedListDeque<String> b = new LinkedListDeque<>();
+        for (int i = 0; i < 5; i++) {
+            b.addFirst(String.valueOf(i));
+        }
+
+        assertTrue("a and be should be equals", a.equals(b));
+    }
+
+    @Test
+    public void testIteratorNextManyTimes() {
+        ArrayDeque<String> a = new ArrayDeque<>();
+        for (int i = 0; i < 5; i++) {
+            a.addLast(String.valueOf(i));
+        }
+
+        Iterator<String> it = a.iterator();
+        for (int i = 0; i < 100; i++) {
+            it.next();
+        }
+    }
+
+    @Test
+    public void testIteratorHasNext() {
+        ArrayDeque<String> a = new ArrayDeque<>();
+        for (int i = 0; i < 5; i++) {
+            a.addLast(String.valueOf(i));
+        }
+
+        Iterator<String> it = a.iterator();
+        for (int i = 0; i < 100; i++) {
+            it.next();
+        }
+
+        assertFalse("it should has no next", it.hasNext());
     }
 }
