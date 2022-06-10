@@ -12,7 +12,7 @@ public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
         private ListNode next;
         private ListNode prev;
 
-        public ListNode(T v, ListNode n, ListNode p) {
+        ListNode(T v, ListNode n, ListNode p) {
             value = v;
             next = n;
             prev = p;
@@ -141,7 +141,7 @@ public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
             return false;
         }
 
-        if(o == this) {
+        if (o == this) {
             return true;
         }
 

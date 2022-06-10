@@ -27,8 +27,8 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
             reIndexFirstAdd();
         }
         items[first] = item;
-        firstNum = firstNum + 1;
         size = size + 1;
+        firstNum = firstNum + 1 >= size ? size : firstNum + 1;
         first = first - 1 < 0 ? items.length - 1 : first - 1;
     }
 
@@ -37,13 +37,13 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
         resetPtr();
         if (first == last || last > items.length - 1) {
             reIndexFirstAdd();
-            if(last > items.length - 1) {
+            if (last > items.length - 1) {
                 last = last - 1;
             }
         }
         items[last] = item;
-        lastNum = lastNum + 1;
         size = size + 1;
+        lastNum = lastNum + 1 >= size ? size : lastNum + 1;
         last = last + 1 > items.length - 1 ? 0 : last + 1;
     }
 
@@ -80,11 +80,11 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
             lastNum = lastNum - 1;
         }
 
+        size = size - 1;
         firstNum = firstNum - 1 >= 0 ? firstNum - 1 : 0;
         first = first + 1;
         T retItem = items[first];
         items[first] = null;
-        size = size - 1;
         if (size < (int) (items.length * 0.25)) {
             reIndexFirstRemove();
         }
@@ -104,15 +104,15 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
             last = items.length;
         }
 
-        if (lastNum < 0 && firstNum > 0) {
+        if (lastNum == 0 && firstNum > 0) {
             firstNum = firstNum - 1;
         }
 
+        size = size - 1;
         lastNum = lastNum - 1 >= 0 ? lastNum - 1 : 0;
         last = last - 1;
         retItem = items[last];
         items[last] = null;
-        size = size - 1;
         if (size != 0 && size < items.length * 0.25) {
             reIndexFirstRemove();
         }
@@ -181,7 +181,7 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
 
     //help reset the First index when larger the length of the deque
     private void reIndexFirstAdd() {
-        double increaseRefactor = 1.5;
+        double increaseRefactor = 2.0;
         int capacity = (int) (items.length * increaseRefactor);
         int befResizeLen = items.length;
         resize(increaseRefactor);
@@ -220,7 +220,7 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
     private class ArrayDequeIterator implements Iterator<T> {
         private int wisPos;
 
-        public ArrayDequeIterator() {
+        ArrayDequeIterator() {
             wisPos = 0;
         }
 
@@ -231,17 +231,17 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
 
         @Override
         public T next() {
-            if(wisPos == size) {
+            if (wisPos == size) {
                 return null;
             }
 
-            if(wisPos < items.length - first - 1) {
+            if (wisPos < items.length - first - 1) {
                 T retItem = items[first + wisPos + 1];
                 wisPos = wisPos + 1;
                 return retItem;
             } else {
                 T retItem;
-                if(first == items.length - 1) {
+                if (first == items.length - 1) {
                     retItem = items[wisPos];
                 } else {
                     retItem = items[wisPos - last];
