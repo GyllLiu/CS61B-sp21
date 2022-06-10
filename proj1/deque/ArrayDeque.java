@@ -170,11 +170,12 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
 
     private void resize(double refactor) {
         T[] temp = (T[]) new Object[(int) (items.length * refactor)];
+        int rightNums = items.length - first;
         if (last > first) {
             System.arraycopy(items, first, temp, temp.length / 2 - 1, last - first);
         } else {
             System.arraycopy(items, 0, temp, 0, last);
-            System.arraycopy(items, first, temp, temp.length - (items.length - first), items.length - first);
+            System.arraycopy(items, first, temp, temp.length - rightNums, rightNums);
         }
         items = temp;
     }
@@ -231,24 +232,20 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
 
         @Override
         public T next() {
+            T retItem;
+
             if (wisPos == size) {
                 return null;
             }
 
-            if (wisPos < items.length - first - 1) {
-                T retItem = items[first + wisPos + 1];
-                wisPos = wisPos + 1;
-                return retItem;
+            int rightNums = items.length - first - 1;
+            if (wisPos < rightNums || last > first) {
+                retItem = items[first + wisPos + 1];
             } else {
-                T retItem;
-                if (first == items.length - 1) {
-                    retItem = items[wisPos];
-                } else {
-                    retItem = items[wisPos - last];
-                }
-                wisPos = wisPos + 1;
-                return retItem;
+                retItem = items[wisPos - rightNums];
             }
+            wisPos = wisPos + 1;
+            return retItem;
         }
     }
 }

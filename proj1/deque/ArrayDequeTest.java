@@ -334,10 +334,48 @@ public class ArrayDequeTest {
         }
 
         Iterator<String> it = a.iterator();
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 100000; i++) {
             it.next();
         }
 
         assertFalse("it should has no next", it.hasNext());
+    }
+
+    @Test
+    public void iteratorTest() {
+        ArrayDeque<Integer> arrayDeque = new ArrayDeque<>();
+
+        for (int i = 0; i < 20; i++) {
+            arrayDeque.addLast(i);
+        }
+
+        arrayDeque.removeFirst();
+        arrayDeque.removeFirst();
+        arrayDeque.removeFirst();
+        arrayDeque.removeFirst();
+        arrayDeque.removeLast();
+        arrayDeque.removeLast();
+        arrayDeque.removeLast();
+
+
+        for (int i = 0; i < 20; i++) {
+            arrayDeque.addFirst(i);
+        }
+
+        arrayDeque.removeFirst();
+        arrayDeque.removeFirst();
+        arrayDeque.removeFirst();
+        arrayDeque.removeFirst();
+        arrayDeque.removeLast();
+        arrayDeque.removeLast();
+        arrayDeque.removeLast();
+
+        int index = 0;
+        for (int item : arrayDeque) {
+            int a = item;
+            int b = arrayDeque.get(index);
+            assertEquals("Should be equal", a, b);
+            index += 1;
+        }
     }
 }

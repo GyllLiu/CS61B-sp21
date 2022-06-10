@@ -30,14 +30,14 @@ public class MaxArrayDeque<T> extends ArrayDeque<T> {
 
     private int findMaxInd(Comparator<T> c) {
 
-        int max = 0, ind = 1;
+        int maxInd = 0, ind = 1;
 
         while (ind < this.size()) {
-            if (c.compare(this.get(max), this.get(ind)) < 0) {
-                max = ind;
+            if (c.compare(this.get(maxInd), this.get(ind)) < 0) {
+                maxInd = ind;
             }
             ind = ind + 1;
         }
-        return max;
+        return maxInd;
     }
 }
