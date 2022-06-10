@@ -1,6 +1,9 @@
 package deque;
 
 import org.junit.Test;
+
+import java.util.Iterator;
+
 import static org.junit.Assert.*;
 
 
@@ -133,8 +136,52 @@ public class LinkedListDequeTest {
         for (double i = 999999; i > 500000; i--) {
             assertEquals("Should have the same value", i, (double) lld1.removeLast(), 0.0);
         }
-
-
     }
 
+    @Test
+    public void testIteratorAddLastAndFirst() {
+        LinkedListDeque<String> a = new LinkedListDeque<>();
+        for(int i = 0; i < 5; i++) {
+            a.addLast(String.valueOf(i));
+        }
+
+        for(int i = 5; i < 10; i++) {
+            a.addFirst(String.valueOf(i));
+        }
+
+        Iterator<String> it = a.iterator();
+        while (it.hasNext()) {
+            System.out.print(it.next() + " ");
+        }
+    }
+
+    @Test
+    public void testRemoveFrist() {
+        LinkedListDeque<Integer> a = new LinkedListDeque<>();
+
+        for(int i = 0; i < 10; i++) {
+            a.addFirst(i);
+        }
+
+        for(int i = 0; i < 10; i++) {
+            a.removeFirst();
+        }
+
+        assertTrue("a should be empty after removal", a.isEmpty());
+    }
+
+    @Test
+    public void testRemoveLast() {
+        LinkedListDeque<Integer> a = new LinkedListDeque<>();
+
+        for(int i = 0; i < 10; i++) {
+            a.addFirst(i);
+        }
+
+        for(int i = 0; i < 10; i++) {
+            a.removeLast();
+        }
+
+        assertTrue("a should be empty after removal", a.isEmpty());
+    }
 }
