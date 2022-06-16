@@ -1,13 +1,10 @@
 package bstmap;
 
-import com.puppycrawl.tools.checkstyle.checks.annotation.AnnotationUseStyleCheck;
-
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Set;
 
-public class BSTMap<K extends Comparable, V> implements Map61B<K, V> {
+public class BSTMap<K extends Comparable<K>, V> implements Map61B<K, V> {
 
     private BSTNode root;
     private int size;
@@ -176,5 +173,19 @@ public class BSTMap<K extends Comparable, V> implements Map61B<K, V> {
             root.left = putHelper(root.left, key, val);
         }
         return root;
+    }
+
+    public void printInOrder() {
+        printInOrder(root);
+    }
+
+    private void printInOrder(BSTNode root) {
+        if(root == null) {
+            return;
+        }
+
+        printInOrder(root.left);
+        System.out.println(root.key);
+        printInOrder(root.right);
     }
 }
